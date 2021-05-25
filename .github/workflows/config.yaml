@@ -1,0 +1,60 @@
+#运行模式 release=生产环境 test=测试环境 debug=调试环境
+run_mode: release
+#服务绑定地址
+http_host: 0.0.0.0
+#服务运行端口
+http_port: 8081
+#授权成功同步回调地址
+redirect_token_url: https://genshin.xt.com/?token=%token%
+#qq授权信息
+qqoauth:
+    client_id: ***************
+    client_secret: ***********
+    redirect_uri: https://xxxx.com
+#mysql配置
+mysql:
+    host: 127.0.0.1
+    port: 端口号
+    name: 数据库名称
+    user: 用户名
+    password: 密码
+#smtp邮件配置
+smtp:
+  enable: true #是否启用
+  host: smtp.xxxxx.com
+  port: 25
+  user: xxx@xxx.com
+  password: xxxxxx
+  from: 原神签到通知
+#redis配置
+redis:
+    host: 127.0.0.1
+    port: 6379
+    password: 123456789
+    index: 1 #redis选择库
+#mirai qq http插件机器人配置
+qqbot:
+    #接口地址
+    url: http://*****:8080
+    #机器人qq号
+    qq: ******
+    #机器人密钥
+    key: ********
+    #绑定成功后通知的群组(数组)
+    bind_notify_group:
+        - ****群号
+    #签到成功后通知的群组(数组)
+    sign_notify_group:
+        - *****群号
+    #cookie过期后通知的群组(数组)
+    expire_notify_group:
+        - ****群号
+#由于米游社api请求过多会导致失败,这里可以配置远程curl接口调用
+#数组api列表【文件位于项目目录curl目录下remote.php文件env >= php7.0】
+curl_api:
+  - https://*********/remote.php
+  - https://*********/xxx/remote.php
+#任务触发时间,第一个值将作为凌晨多次检测触发
+task:
+  - 10 0 0 * * *   #每日凌晨0点0分第十秒触发
+  - 0 */5 * * * *  #每5分钟触发一次
